@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:936616076058:android:89b8f84c97581bc16e02a3",
+        "mobilesdk_app_id": "1:936616076058:android:6217a9f6c76130426e02a3",
         "android_client_info": {
-          "package_name": "ml.mickfrost.project1"
+          "package_name": "com.example.project1"
         }
       },
       "oauth_client": [

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './modals/invoice.dart';
 import './printing.dart';
+
 class PaymentInvoice extends StatefulWidget {
   final Invoice invoice;
 
@@ -27,7 +28,6 @@ class PIState extends State<PaymentInvoice> {
     paymentController = new TextEditingController();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,9 @@ class PIState extends State<PaymentInvoice> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => PrintInv(invoice: invoice,)));
+                  builder: (context) => PrintInv(
+                        invoice: invoice,
+                      )));
         },
         label: Text('Done'),
         icon: Icon(CupertinoIcons.check_mark_circled),
@@ -50,7 +52,7 @@ class PIState extends State<PaymentInvoice> {
       body: Center(
         child: Container(
           padding: EdgeInsets.all(32),
-          width: 600,
+//          width: 600,
           child: Card(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,7 +75,13 @@ class PIState extends State<PaymentInvoice> {
                 ),
                 ListTile(
                   title: Text('(Discount)'),
-                  trailing: TextFormField(controller: discountController,),
+                  trailing: Text(
+                    invoice.discount.toString(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
                 ListTile(
                   title: Text(
@@ -106,6 +114,4 @@ class PIState extends State<PaymentInvoice> {
       ),
     );
   }
-
-
 }
