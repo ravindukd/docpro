@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "936616076058",
+    "firebase_url": "https://lifeline-mfpr.firebaseio.com",
+    "project_id": "lifeline-mfpr",
+    "storage_bucket": "lifeline-mfpr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936616076058:android:89b8f84c97581bc16e02a3",
+        "android_client_info": {
+          "package_name": "ml.mickfrost.project1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936616076058-cik635992htfq4dnu3gd7289gi3sgv9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFAYjPDBOIF-pKqb_sAx8ovHZ9CczWa1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936616076058-cik635992htfq4dnu3gd7289gi3sgv9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
