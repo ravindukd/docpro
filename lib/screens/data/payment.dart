@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './modals/invoice.dart';
 import './printing.dart';
+import 'package:page_transition/page_transition.dart';
 
 class PaymentInvoice extends StatefulWidget {
   final Invoice invoice;
@@ -34,12 +35,13 @@ class PIState extends State<PaymentInvoice> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                  builder: (context) => PrintInv(
-                        invoice: invoice,
-                      )));
+              PageTransition(
+                  type: PageTransitionType.fade,
+                  child: PrintInv(
+                    invoice: invoice,
+                  )));
         },
         label: Text('Done'),
         icon: Icon(CupertinoIcons.check_mark_circled),

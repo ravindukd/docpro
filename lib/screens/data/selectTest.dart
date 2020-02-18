@@ -4,32 +4,35 @@ import './customerSelect.dart';
 import 'package:searchable_dropdown/searchable_dropdown.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import './modals/invoice.dart';
+import './modals/customer.dart';
 import './payment.dart';
 import 'dart:math';
+import 'package:page_transition/page_transition.dart';
 
 class SelectTest extends StatefulWidget {
-  final customer, idc;
+  final Customer customer;
 
-  SelectTest({this.customer, this.idc});
+  SelectTest({this.customer});
 
   @override
-  State<StatefulWidget> createState() => _SelectTestState(customer: customer, idc: idc);
+  State<StatefulWidget> createState() => _SelectTestState(customer: customer);
 }
 
 class _SelectTestState extends State<SelectTest> {
-  final customer, idc;
+  final Customer customer;
 
-  _SelectTestState({this.customer, this.idc});
+  _SelectTestState({this.customer});
 
   bool isLoading = false;
   Invoice invoice = new Invoice();
 
   var dataDocs = {};
   String selectedValue;
+
   Widget customerChip(context) {
     return Chip(
       label: Text(
-        customer['name'],
+        customer.name,
         style: TextStyle(color: Colors.blue),
       ),
       backgroundColor: Colors.white,
@@ -50,6 +53,7 @@ class _SelectTestState extends State<SelectTest> {
       },
     );
   }
+
   Widget _testsDropDown() {
     List<DropdownMenuItem> items = [];
     Firestore.instance.collection('Test').snapshots().listen((data) {
@@ -126,12 +130,11 @@ class _SelectTestState extends State<SelectTest> {
         onPressed: () {
           print(invoice.toJson());
           var i = invoice.toJson();
+
           Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => PaymentInvoice(
-                        invoice: invoice
-                      )));
+              PageTransition(
+                  type: PageTransitionType.rightToLeft, child: PaymentInvoice(invoice: invoice)));
         },
         label: Text('Done'),
         icon: Icon(CupertinoIcons.check_mark_circled),
@@ -142,7 +145,14 @@ class _SelectTestState extends State<SelectTest> {
         title: Text('Select Tests'),
         actions: <Widget>[
           customerChip(context),
-
+          IconButton(
+              icon: Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              })
         ],
       ),
       body: Center(
@@ -187,7 +197,7 @@ class _SelectTestState extends State<SelectTest> {
     super.initState();
     var rng = new Random();
     invoice.tests = [];
-    invoice.customer = idc;
+    invoice.customer = customer.id;
     invoice.barcode = rng.nextInt(999999);
   }
 }

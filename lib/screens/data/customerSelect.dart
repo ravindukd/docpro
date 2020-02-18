@@ -35,6 +35,8 @@ class CustomerSelectState extends State<CustomerSelect> {
       return false;
     } else {
       form.save();
+      newCustomer.age = newCustomer.calAge();
+      print(newCustomer.calAge());
       DocumentReference cstRef = Firestore.instance
           .collection('labs')
           .document('hsfiY8YtyANYwhQvZAQf')

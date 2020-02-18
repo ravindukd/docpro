@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:responsive_scaffold/responsive_scaffold.dart';
 import './customers.dart';
 import './home.dart';
-import './../data/selectCustomer.dart';
+import './../customer/selectCustomer.dart';
 import './../data/customerSelect.dart';
 
 class Dash extends StatefulWidget {
@@ -144,9 +144,7 @@ class _dashState extends State<Dash> {
             Container(
               color: Colors.green,
             ),
-            Container(
-              color: Colors.blue,
-            ),
+            SelectCustomer()
           ],
         ),
       ),
